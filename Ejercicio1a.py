@@ -1,6 +1,6 @@
 """
  Ejercicio 1a: comienza desde un vertice del triangulo y luego elige aleatoriamente el siguiente vertice
-  y dibuja un pixel en medio, luego selecciona aleatoriamente un nuevo vertice y dibuja el punto medio.
+  y dibuja el pixel en una de las 3 opciones, luego selecciona aleatoriamente un nuevo vertice y repite el proceso.
 """
 import random
 import matplotlib.pyplot as plt
@@ -22,19 +22,21 @@ def mostrar_resultado(puntos):
         return ax.plot(xx, yy, 'y.')
     plt.show()
 
-
 def Shierpinski(n, pasos=False):
     vertices = [(0.0, 0.0), (0.5, 1.0), (1.0, 0.0)]
     puntos = []
     #inicializa el vertice
     x, y = random.choice(vertices)
     for i in range(n):
-        #selecciona el nuevo vertice
         vx, vy = random.choice(vertices)
-        #encuentra el punto medio
         x = (vx + x) / 2.0
         y = (vy + y) / 2.0
-        puntos.append((x, y))
+        #f1
+        puntos.append((x, y)) 
+        #f2
+        puntos.append((x + 0.5, y))
+        #f3
+        puntos.append((x + 0.25, y + 0.5))
         print(x,y)
     if pasos:
         mostrar_resultado(puntos)
