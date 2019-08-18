@@ -17,7 +17,7 @@ def mostrar_resultado(puntos):
     yy = [y for (x, y) in puntos]
     fig = plt.figure()
     def pasos(i):
-        scale = 1 - i * 0.02
+        scale = 0.1 - i * 0.0000001
         ax = plt.axes(xlim=(0, scale), ylim=(0, scale))
         return ax.plot(xx, yy, 'y.')
     plt.show()
