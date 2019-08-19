@@ -26,14 +26,14 @@ def Barnsley(n, pasos=False):
     f4 = lambda x,y: (0., 0.16*y)
     fs = [f4, f1, f3, f2]
     width, height = 300, 300
-    aimg = np.zeros((width, height))
+    pantalla = np.zeros((width, height))
     x, y = 0, 0
     for i in range(n):
         f = np.random.choice(fs, p=[0.01, 0.85, 0.07, 0.07])
         x, y = f(x,y)
         ix, iy = int(width / 2 + x * width / 10), int(y * height / 12)
         print(x,y)
-        aimg[iy, ix] = 1
-    plt.imshow(aimg[::-1,:], cmap=cm.Greens)
+        pantalla[iy, ix] = 1
+    plt.imshow(pantalla[::-1,:], cmap=cm.Greens)
     plt.show()
 Barnsley(n=100000, pasos=False)
