@@ -1,6 +1,10 @@
 """
- Ejercicio 1a: comienza desde un vertice del triangulo y luego elige aleatoriamente el siguiente vertice
-  y dibuja el pixel en una de las 3 opciones, luego selecciona aleatoriamente un nuevo vertice y repite el proceso.
+---------------------------------------------- Primer mini proyecto -------------------------------------------------
+Ana Lucía Leppe - 16
+Pablo Viana - 16091 
+
+Ejercicio 1a: comienza desde un vertice del triangulo y luego elige aleatoriamente el siguiente vertice
+y dibuja el pixel en una de las 3 opciones, luego selecciona aleatoriamente un nuevo vertice y repite el proceso.
 """
 import random
 import matplotlib.pyplot as plt

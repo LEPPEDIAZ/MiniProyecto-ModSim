@@ -1,3 +1,11 @@
+"""
+---------------------------------------------- Primer mini proyecto -------------------------------------------------
+Ana Lucía Leppe - 16
+Pablo Viana - 16091 
+
+Ejercicio 2 juego de caos para el helecho de barnsley
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
