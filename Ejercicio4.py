@@ -66,7 +66,7 @@ def integrate3(x1,x2,func=integrand,n=1000000):
             check.append(1)
     return(np.mean(check)*area,xs,ys,check)
 def menu():
-    print("************MAIN MENU**************")
+    print("************Ejercicio 4**************")
     print()
 
     choice = input("""
