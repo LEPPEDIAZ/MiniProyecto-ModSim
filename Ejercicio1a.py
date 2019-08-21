@@ -28,30 +28,30 @@ def mostrar_resultado(puntos):
         return ax.plot(xx, yy, 'y.')
     plt.show()
 
-def probabilidad(funciones, probabilidades):
-    resultado = []
-    for dato, prob in zip(funciones,probabilidades):
-         resultado += [dato] * int(prob * 1000)
-    return random.choice(resultado)
+def probabilidad(F, P):
+    puntos = []
+    for dato, prob in zip(F,P):
+         puntos += [dato] * int(prob * 1000)
+    return random.choice(puntos)
 
 def paso_deterministico( x, y):
     return [(x/2, y/2), (x/2 + 0.5, y/2 ), (x/2 + 0.25, y/2 + 0.5)]
 
-def Shierpinski(probabilidades= [0.33, 0.33, 0.33] , n = 100000):
+def Shierpinski(P= [0.33, 0.33, 0.33] , n = 100000):
     x = []
     y = []
     x.append(0)
     y.append(0)
     for i in range(1,n):
-        funcion = paso_deterministico(x[i-1], y[i-1])
-        resultado= probabilidad(funcion, probabilidades)
-        x.append(resultado[0])
-        y.append(resultado[1]) 
+        F = paso_deterministico(x[i-1], y[i-1])
+        puntos= probabilidad(F, P)
+        x.append(puntos[0])
+        y.append(puntos[1]) 
     return x, y
 
 Shierpinski = Shierpinski()
 plt.plot(Shierpinski[0], Shierpinski[1], "y.")
-print(Shierpinski[0], Shierpinski[1]  ,"/n")
+print(Shierpinski[0], Shierpinski[1]  )
 plt.show()
 
 
