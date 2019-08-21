@@ -3,17 +3,17 @@
 Ana Lucía Leppe - 16
 Pablo Viana - 16091 
 
-Ejercicio 2 juego de caos para el helecho de barnsley
+Ejercicio 2 juego de caos para el helecho de barnsley: sigue con las mismas funciones del juego de caos anterior. Pero modifica 
+las probabilidades y las funciones. 
 """
-
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
-
+import random
 def graficar(puntos):
     xx = [x for (x, y) in puntos]
     yy = [y for (x, y) in puntos]
-    plt.plot(xx, yy, 'y.')
+    plt.plot(xx, yy, 'g.')
     plt.show()
 
 def mostrar_resultado(puntos):
@@ -23,25 +23,31 @@ def mostrar_resultado(puntos):
     def pasos(i):
         scale = 0.1 - i * 0.0000001
         ax = plt.axes(xlim=(0, scale), ylim=(0, scale))
-        return ax.plot(xx, yy, 'y.')
+        return ax.plot(xx, yy, 'g.')
     plt.show()
 
-def Barnsley(n, pasos=False):
+def probabilidad(F, P):
     puntos = []
-    f1 = lambda x,y: (0.85*x + 0.04*y, -0.04*x + 0.85*y + 1.6)
-    f2 = lambda x,y: (-0.15*x + 0.28*y, 0.26*x + 0.24*y + 0.44)
-    f3 = lambda x,y: (0.2*x - 0.26*y, 0.23*x + 0.22*y + 1.6)
-    f4 = lambda x,y: (0., 0.16*y)
-    fs = [f4, f1, f3, f2]
-    width, height = 300, 300
-    pantalla = np.zeros((width, height))
-    x, y = 0, 0
-    for i in range(n):
-        f = np.random.choice(fs, p=[0.01, 0.85, 0.07, 0.07])
-        x, y = f(x,y)
-        ix, iy = int(width / 2 + x * width / 10), int(y * height / 12)
-        print(x,y)
-        pantalla[iy, ix] = 1
-    plt.imshow(pantalla[::-1,:], cmap=cm.Greens)
-    plt.show()
-Barnsley(n=100000, pasos=False)
+    for dato, prob in zip(F,P):
+         puntos += [dato] * int(prob * 1000)
+    return random.choice(puntos)
+
+def paso_deterministico( x, y):
+    return [(x*0.86 + y*0.04+ 0.0, x*-0.04 + y* 0.85 + 1.6), (-0.15*x + 0.28*y + 0.0, x*0.26+ y*0.24+ 0.44), (x*0.2 + y*-0.26 + 0.0, x*0.23 + y*0.22 + 1.6), (x*0.0 + y*0.0, x*0.0 + y*0.16)]
+
+def Barnsley(P= [0.85, 0.07, 0.07, 0.01] , n = 100000):
+    x = []
+    y = []
+    x.append(0)
+    y.append(0)
+    for i in range(1,n):
+        F = paso_deterministico(x[i-1], y[i-1])
+        puntos= probabilidad(F, P)
+        x.append(puntos[0])
+        y.append(puntos[1]) 
+    return x, y
+
+Barnsley = Barnsley()
+plt.plot(Barnsley[0], Barnsley[1], "g.")
+print(Barnsley[0], Barnsley[1]  )
+plt.show()
