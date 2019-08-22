@@ -4,7 +4,7 @@ import numpy as np
 from scipy.integrate import quad
 
 def g(y):
-	return 2 * (math.e ** ((-1 * (1/y -1)**2)/ (y ** 2 )))
+	return 2 * (math.exp(-((1/y)-1)**2)/ y**2)
 def MonteCarlo(F, iteraciones):
     for i in range(iteraciones):
         decision = np.random.uniform(0,1) + 1
