@@ -9,7 +9,8 @@ def MonteCarlo(F, iteraciones):
     for i in range(iteraciones):
         decision = np.random.uniform(0,1) + 1
         calcular = 0
-        calcular += F(decision) 
+        decision1 = np.random.random() + 1
+        calcular += calcular + F(decision1) 
         calcular = calcular / iteraciones
     return  calcular + decision
 
